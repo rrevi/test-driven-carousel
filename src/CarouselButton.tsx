@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
-const CarouselButton = ({ children }: { children?: ReactNode }) => (
-  <button>{children}</button>
+const CarouselButton = (props: ComponentPropsWithRef<"button">) => (
+  <button {...props} />
 );
 
 export default CarouselButton;
