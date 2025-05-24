@@ -7,7 +7,8 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
     "plugin:react/recommended",
-	  "plugin:react/jsx-runtime"
+	  "plugin:react/jsx-runtime",
+    "plugin:testing-library/react",
   ],
   settings: {
     react: {
