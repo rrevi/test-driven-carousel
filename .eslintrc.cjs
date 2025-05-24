@@ -1,11 +1,19 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { node: true, es2020: true },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    'prettier',
+    "plugin:react/recommended",
+	  "plugin:react/jsx-runtime"
   ],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh'],
@@ -15,4 +23,20 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  overrides: [
+    { files: ['*.cjs'] },
+    {
+      files: ["*.ts", "*.tsx"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      ],
+      plugins: ["@typescript-eslint"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
+    },
+  ],
 }
