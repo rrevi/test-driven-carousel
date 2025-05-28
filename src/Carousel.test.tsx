@@ -5,19 +5,19 @@ import Carousel from "./Carousel";
 describe("Carousel", () => {
   const slides = [
     {
-      imgUrl: 'https://example.com/slide1.png',
-      description: 'Slide 1',
-      attribution: 'Uno Pizzeria',
+      imgUrl: "https://example.com/slide1.png",
+      description: "Slide 1",
+      attribution: "Uno Pizzeria",
     },
     {
-      imgUrl: 'https://example.com/slide2.png',
-      description: 'Slide 2',
-      attribution: 'Dos Equis',
+      imgUrl: "https://example.com/slide2.png",
+      description: "Slide 2",
+      attribution: "Dos Equis",
     },
     {
-      imgUrl: 'https://example.com/slide3.png',
-      description: 'Slide 3',
-      attribution: 'Three Amigos',
+      imgUrl: "https://example.com/slide3.png",
+      description: "Slide 3",
+      attribution: "Three Amigos",
     },
   ];
 
@@ -59,4 +59,4 @@ describe("Carousel", () => {
     await user.click(nextButton);
     expect(img).toHaveAttribute("src", slides[0].imgUrl);
   });
-})
+});

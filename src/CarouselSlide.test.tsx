@@ -4,7 +4,7 @@ import CarouselSlide from "./CarouselSlide";
 describe("CarouselSlide", () => {
   it("renders a <figure>", () => {
     render(<CarouselSlide />);
-    expect(screen.getByRole("figure")).toBeInTheDocument(); 
+    expect(screen.getByRole("figure")).toBeInTheDocument();
   });
 
   it("renders an <img> and a <figcaption>", () => {
@@ -17,7 +17,7 @@ describe("CarouselSlide", () => {
   });
 
   it("passes 'imgUrl' through to the <img>", () => {
-    const imgUrl = 'https://example.com/image.png';
+    const imgUrl = "https://example.com/image.png";
     render(<CarouselSlide imgUrl={imgUrl} />);
     expect(screen.getByRole("img")).toHaveAttribute("src", imgUrl);
   });
@@ -26,7 +26,7 @@ describe("CarouselSlide", () => {
     const props = {
       description: "A jaw-droppingly spectacular image",
       attribution: "Trevor Burnham",
-    }
+    };
     render(<CarouselSlide {...props} />);
     const fgicaption = screen.getByTestId("caption");
     expect(fgicaption).toHaveTextContent(
@@ -43,5 +43,5 @@ describe("CarouselSlide", () => {
     const figure = screen.getByRole("figure");
     expect(figure).toHaveClass(props.className);
     expect(figure).toHaveAttribute("data-test-name", props["data-test-name"]);
-  })
-})
+  });
+});

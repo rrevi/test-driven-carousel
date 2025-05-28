@@ -6,14 +6,14 @@ type Slide = {
   imgUrl?: string;
   description?: ReactNode;
   attribution?: ReactNode;
-}
+};
 
 export type CarouselProps = {
   slides: Slide[];
   defaultImgHeight?: CarouselSlideProps["imgHeight"];
-}
+};
 
-const  Carousel = ({ slides, defaultImgHeight }: CarouselProps) => {
+const Carousel = ({ slides, defaultImgHeight }: CarouselProps) => {
   const [slideIndex, setSlideIndex] = useState(0);
   return (
     <div data-testid="carousel">
@@ -22,8 +22,8 @@ const  Carousel = ({ slides, defaultImgHeight }: CarouselProps) => {
       <CarouselButton
         data-testid="prev-button"
         onClick={() => {
-          if(!slides) return;
-          setSlideIndex((i) => (i + slides.length - 1) % slides.length)
+          if (!slides) return;
+          setSlideIndex((i) => (i + slides.length - 1) % slides.length);
         }}
       >
         Prev
@@ -39,6 +39,6 @@ const  Carousel = ({ slides, defaultImgHeight }: CarouselProps) => {
       </CarouselButton>
     </div>
   );
-}
+};
 
 export default Carousel;

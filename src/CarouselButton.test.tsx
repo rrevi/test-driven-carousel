@@ -22,6 +22,9 @@ describe("CarouselButton", () => {
       </CarouselButton>
     );
     expect(screen.getByRole("button")).toHaveClass(className);
-    expect(screen.getByRole("button")).toHaveAttribute("data-action", dataAction);
-  })
-})
+    expect(screen.getByRole("button")).toHaveAttribute(
+      "data-action",
+      dataAction
+    );
+  });
+});

@@ -3,12 +3,12 @@ module.exports = {
   root: true,
   env: { node: true, es2020: true },
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-    'prettier',
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
     "plugin:react/recommended",
-	  "plugin:react/jsx-runtime",
+    "plugin:react/jsx-runtime",
     "plugin:testing-library/react",
   ],
   settings: {
@@ -16,17 +16,17 @@ module.exports = {
       version: "detect",
     },
   },
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["react-refresh"],
   rules: {
-    'react-refresh/only-export-components': [
-      'warn',
+    "react-refresh/only-export-components": [
+      "warn",
       { allowConstantExport: true },
     ],
   },
   overrides: [
-    { files: ['*.cjs'] },
+    { files: ["*.cjs"] },
     {
       files: ["*.ts", "*.tsx"],
       extends: [
@@ -41,4 +41,4 @@ module.exports = {
       },
     },
   ],
-}
+};
