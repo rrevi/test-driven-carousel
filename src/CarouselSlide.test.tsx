@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import CarouselSlide from "./CarouselSlide";
+import CarouselSlide, { ScaledImg } from "./CarouselSlide";
+import styled from "styled-components";
+import Carousel from "./Carousel";
 
 describe("CarouselSlide", () => {
   it("renders a <figure>", () => {
@@ -43,5 +45,28 @@ describe("CarouselSlide", () => {
     const figure = screen.getByRole("figure");
     expect(figure).toHaveClass(props.className);
     expect(figure).toHaveAttribute("data-test-name", props["data-test-name"]);
+  });
+
+  it("has the expected static styles", () => {
+    render(<CarouselSlide />);
+    const img = screen.getByRole("img");
+    expect(img).toHaveStyleRule("object-fit", "cover");
+    expect(img).toHaveStyleRule("width", "100%");
+  });
+
+  it("uses 'imgHeight' as the height of the <img>", () => {
+    render(<CarouselSlide imgHeight="123px" />);
+    expect(screen.getByRole("img")).toHaveStyleRule("height", "123px");
+  });
+
+  it("allows styles to be overwritten with 'ImgComponent'", () => {
+    const TestImg = styled(ScaledImg)`
+      width: auto;
+      object-fit: fill;
+    `;
+    render(<CarouselSlide ImgComponent={TestImg} imgHeight={250} />);
+    expect(screen.getByRole("img")).toHaveStyleRule("width", "auto");
+    expect(screen.getByRole("img")).toHaveStyleRule("height", "250px");
+    expect(screen.getByRole("img")).toHaveStyleRule("object-fit", "fill");
   });
 });
