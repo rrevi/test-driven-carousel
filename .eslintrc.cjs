@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:testing-library/react",
+    "plugin:react-hooks/recommended",
   ],
   settings: {
     react: {
