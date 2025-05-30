@@ -2,25 +2,25 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Carousel from "./Carousel";
 
-describe("Carousel", () => {
-  const slides = [
-    {
-      imgUrl: "https://example.com/slide1.png",
-      description: "Slide 1",
-      attribution: "Uno Pizzeria",
-    },
-    {
-      imgUrl: "https://example.com/slide2.png",
-      description: "Slide 2",
-      attribution: "Dos Equis",
-    },
-    {
-      imgUrl: "https://example.com/slide3.png",
-      description: "Slide 3",
-      attribution: "Three Amigos",
-    },
-  ];
+const slides = [
+  {
+    imgUrl: "https://example.com/slide1.png",
+    description: "Slide 1",
+    attribution: "Uno Pizzeria",
+  },
+  {
+    imgUrl: "https://example.com/slide2.png",
+    description: "Slide 2",
+    attribution: "Dos Equis",
+  },
+  {
+    imgUrl: "https://example.com/slide3.png",
+    description: "Slide 3",
+    attribution: "Three Amigos",
+  },
+];
 
+describe("Carousel", () => {
   it("renders a <div>", () => {
     render(<Carousel />);
     expect(screen.getByTestId("carousel")).toBeInTheDocument();
@@ -75,4 +75,48 @@ describe("Carousel", () => {
     const img = screen.getByRole("img");
     expect(img).toHaveStyleRule("height", "1234px");
   })
+});
+
+describe("with controlled slideIndex", () => {
+  const onSlideIndexChange = vi.fn();
+  const renderCarouselWithSlideIndex = () =>
+    render(
+      <Carousel
+        slides={slides}
+        slideIndex={1}
+        onSlideIndexChange={onSlideIndexChange}
+      />
+    );
+
+  beforeEach(() => {
+    onSlideIndexChange.mockReset();
+  });
+
+  it("shows the slide corresponding to slideIndex", () => {
+    renderCarouselWithSlideIndex();
+    const img = screen.getByRole("img");
+    expect(img).toHaveAttribute("src", slides[1].imgUrl);
+  });
+
+  it("calls onSlideIndexChange when Prev is clicked", async () => {
+    renderCarouselWithSlideIndex();
+    const img = screen.getByRole("img");
+    const prevButton = screen.getByTestId("prev-button");
+    const user = userEvent.setup();
+
+    await user.click(prevButton);
+    expect(img).toHaveAttribute("src", slides[1].imgUrl);
+    expect(onSlideIndexChange).toHaveBeenCalledWith(0);
+  });
+
+  it("calls onSlideIndexChange when Next is clicked", async () => {
+    renderCarouselWithSlideIndex();
+    const img = screen.getByRole("img");
+    const nextButton = screen.getByTestId("next-button");
+    const user = userEvent.setup();
+
+    await user.click(nextButton);
+    expect(img).toHaveAttribute("src", slides[1].imgUrl);
+    expect(onSlideIndexChange).toHaveBeenCalledWith(2);
+  });
 });
