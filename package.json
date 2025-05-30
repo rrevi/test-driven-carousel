@@ -13,7 +13,8 @@
     "format:css": "stylelint \"**/*.{ts,tsx}\" --fix",
     "format": "npm run format:js && npm run format:css",
     "test": "vitest",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -46,6 +47,7 @@
     "stylelint-config-standard": "^34.0.0",
     "typescript": "^5.3.3",
     "vite": "^4.4.5",
-    "vitest": "^0.34.6"
+    "vitest": "^0.34.6",
+    "husky": "^8.0.0"
   }
 }
