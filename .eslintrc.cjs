@@ -11,6 +11,7 @@ module.exports = {
     "plugin:react/jsx-runtime",
     "plugin:testing-library/react",
     "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended",
   ],
   settings: {
     react: {
