@@ -13,26 +13,25 @@ export type CarouselProps = {
   slides: Slide[];
   slideIndex?: number;
   onSlideIndexChange?: (newSlideIndex: number) => void;
-  autoAdvanceInterval?: number,
+  autoAdvanceInterval?: number;
   DefaultImgComponent?: CarouselSlideProps["ImgComponent"];
   defaultImgHeight?: CarouselSlideProps["imgHeight"];
 };
 
-const Carousel = ({ 
+const Carousel = ({
   slides,
   slideIndex: slideIndexProp,
   onSlideIndexChange,
   autoAdvanceInterval,
   DefaultImgComponent,
-  defaultImgHeight 
+  defaultImgHeight,
 }: CarouselProps) => {
-  const [slideIndex, decrementSlideIndex, incrementSlideIndex] = 
-    useSlideIndex(
-      slides,
-      slideIndexProp,
-      onSlideIndexChange,
-      autoAdvanceInterval
-    );
+  const [slideIndex, decrementSlideIndex, incrementSlideIndex] = useSlideIndex(
+    slides,
+    slideIndexProp,
+    onSlideIndexChange,
+    autoAdvanceInterval
+  );
   return (
     <div data-testid="carousel">
       <CarouselSlide
@@ -41,14 +40,10 @@ const Carousel = ({
         {...slides?.[slideIndex]}
       />
       {}
-      <CarouselButton
-        data-testid="prev-button"
-        onClick={decrementSlideIndex}>
+      <CarouselButton data-testid="prev-button" onClick={decrementSlideIndex}>
         Prev
       </CarouselButton>
-      <CarouselButton
-        data-testid="next-button"
-        onClick={incrementSlideIndex}>
+      <CarouselButton data-testid="next-button" onClick={incrementSlideIndex}>
         Next
       </CarouselButton>
     </div>

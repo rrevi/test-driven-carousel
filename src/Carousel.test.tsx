@@ -74,7 +74,7 @@ describe("Carousel", () => {
     render(<Carousel slides={slides} defaultImgHeight={defaultImgHeight} />);
     const img = screen.getByRole("img");
     expect(img).toHaveStyleRule("height", "1234px");
-  })
+  });
 });
 
 describe("with controlled slideIndex", () => {
@@ -168,9 +168,9 @@ describe("with auto-advance", () => {
     const autoAdvanceInterval = 5_000;
     const CarouselParent = () => (
       <Carousel
-        slides={slides} 
+        slides={slides}
         onSlideIndexChange={vi.fn()}
-        autoAdvanceInterval={autoAdvanceInterval} 
+        autoAdvanceInterval={autoAdvanceInterval}
       />
     );
     const { rerender } = render(<CarouselParent />);
@@ -188,5 +188,5 @@ describe("with auto-advance", () => {
       vi.advanceTimersByTime(1);
     });
     expect(img).toHaveAttribute("src", slides[1].imgUrl);
-  })
+  });
 });

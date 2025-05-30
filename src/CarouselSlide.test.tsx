@@ -51,5 +51,5 @@ describe("CarouselSlide", () => {
   it("matches snapshot", () => {
     render(<CarouselSlide />);
     expect(screen.getByRole("figure")).toMatchSnapshot();
-  })
+  });
 });

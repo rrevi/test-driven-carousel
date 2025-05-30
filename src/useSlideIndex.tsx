@@ -4,7 +4,6 @@ import { useTimeout } from "./useTimeout";
 const decrement = (length: number) => (i: number) => (i + length - 1) % length;
 const increment = (length: number) => (i: number) => (i + 1) % length;
 
-
 export const useSlideIndex = (
   slides?: unknown[],
   slideIndexProp?: number,
@@ -24,7 +23,7 @@ export const useSlideIndex = (
     if (!slides) return;
     setSlideIndexState(decrement(slides.length));
     onSlideIndexChange?.(decrement(slides.length)(slideIndex));
-  }
+  };
 
   const incrementSlideIndex = useCallback(() => {
     if (!slides?.length) return;
@@ -35,4 +34,4 @@ export const useSlideIndex = (
   useTimeout(autoAdvanceInterval, incrementSlideIndex);
 
   return [slideIndex, decrementSlideIndex, incrementSlideIndex] as const;
-}
+};

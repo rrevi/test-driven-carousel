@@ -1,11 +1,8 @@
 import { useEffect } from "react";
 
-export const useTimeout = (
-  delay: number | undefined,
-  callback: () => void
-) => {
+export const useTimeout = (delay: number | undefined, callback: () => void) => {
   useEffect(() => {
-    if(!delay) return;
+    if (!delay) return;
     const timeout = setTimeout(callback, delay);
     return () => {
       clearTimeout(timeout);
